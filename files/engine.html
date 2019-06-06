@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang = "en" ng-app = "main">
+<head>
+    <meta charset = "UTF-8">
+    <title>Google-- Downgrade to the Original!</title>
+    <style>
+        h1
+        {
+            font-size: 2.5cm;
+            margin-bottom: 0.1em;
+            margin-top: 0.1em;
+            text-align: center;
+        }
+        input[type = "text"]
+        {
+            display: block;
+            font-size: 20px;
+            height: 25px;
+            margin: 0 auto;
+        }
+        input[type = "button"]
+        {
+            background-color: white;
+            border: 2px solid blue;
+            color: blue;
+            display: block;
+            font-size: 15px;
+            margin: 0 auto;
+            padding: 10px 50px;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+        input:hover[type = "button"]
+        {
+            background-color: blue;
+            color: white;            
+        }
+        .r
+        {
+            font-size: 20px;
+        }
+        .t
+        {
+            font-size: 40px;
+        }
+        .u
+        {
+            font-size: 20px;
+        }
+        .m
+        {
+            color: red;
+            font-size: 15px;
+        }
+        .h
+        {
+            font-size: 15px;
+        }
+        .c
+        {
+            font-size: 10px;
+        }
+    </style>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+</head>
+<body>
+    <h1><span style = "color:blue">G</span><span style = "color:red">o</span><span style = "color:yellow">o</span><span style = "color:blue">g</span><span style = "color:green">l</span><span style = "color:red">e</span><span style = "color:red">-</span><span style = "color:red">-</span></h1>
+    <div style = "margin: 0 auto" ng-controller = "search">
+        <input type = "text" style = "text-align:center" size = "100" ng-model = "query"><br>
+        <input type = "button" value = "Search" ng-click = "search()">
+        <div class = "r">{{rank}}</div>
+        <div class = "t"><a id = "link">{{title}}</a></div>
+        <div class = "u"><a id = "links">{{url}}</a></div>
+        <div class = "m">{{metadata}}</div>
+        <div class = "h">{{header}}</div>
+        <div class = "c">{{content}}</div><br><br>
+        <div class = "r">{{rank1}}</div>
+        <div class = "t"><a id = "link1">{{title1}}</a></div>
+        <div class = "u"><a id = "links1">{{url1}}</a></div>
+        <div class = "m">{{metadata1}}</div>
+        <div class = "h">{{header1}}</div>
+        <div class = "c">{{content1}}</div><br><br>
+        <div class = "r">{{rank2}}</div>
+        <div class = "t"><a id = "link2">{{title2}}</a></div>
+        <div class = "u"><a id = "links2">{{url2}}</a></div>
+        <div class = "m">{{metadata2}}</div>
+        <div class = "h">{{header2}}</div>
+        <div class = "c">{{content2}}</div><br><br>
+        <div class = "r">{{rank3}}</div>
+        <div class = "t"><a id = "link3">{{title3}}</a></div>
+        <div class = "u"><a id = "links3">{{url3}}</a></div>
+        <div class = "m">{{metadata3}}</div>
+        <div class = "h">{{header3}}</div>
+        <div class = "c">{{content3}}</div><br><br>
+        <div class = "r">{{rank4}}</div>
+        <div class = "t"><a id = "link4">{{title4}}</a></div>
+        <div class = "u"><a id = "links4">{{url4}}</a></div>
+        <div class = "m">{{metadata4}}</div>
+        <div class = "h">{{header4}}</div>
+        <div class = "c">{{content4}}</div><br><br>
+        <div class = "r">{{rank5}}</div>
+        <div class = "t"><a id = "link5">{{title5}}</a></div>
+        <div class = "u"><a id = "links5">{{url5}}</a></div>
+        <div class = "m">{{metadata5}}</div>
+        <div class = "h">{{header5}}</div>
+        <div class = "c">{{content5}}</div><br><br>
+        <div class = "r">{{rank6}}</div>
+        <div class = "t"><a id = "link6">{{title6}}</a></div>
+        <div class = "u"><a id = "links6">{{url6}}</a></div>
+        <div class = "m">{{metadata6}}</div>
+        <div class = "h">{{header6}}</div>
+        <div class = "c">{{content6}}</div><br><br>
+        <div class = "r">{{rank7}}</div>
+        <div class = "t"><a id = "link7">{{title7}}</a></div>
+        <div class = "u"><a id = "links7">{{url7}}</a></div>
+        <div class = "m">{{metadata7}}</div>
+        <div class = "h">{{header7}}</div>
+        <div class = "c">{{content7}}</div><br><br>
+        <div class = "r">{{rank8}}</div>
+        <div class = "t"><a id = "link8">{{title8}}</a></div>
+        <div class = "u"><a id = "links8">{{url8}}</a></div>
+        <div class = "m">{{metadata8}}</div>
+        <div class = "h">{{header8}}</div>
+        <div class = "c">{{content8}}</div><br><br>
+        <div class = "r">{{rank9}}</div>
+        <div class = "t"><a id = "link9">{{title9}}</a></div>
+        <div class = "u"><a id = "links9">{{url9}}</a></div>
+        <div class = "m">{{metadata9}}</div>
+        <div class = "h">{{header9}}</div>
+        <div class = "c">{{content9}}</div><br><br>
+    </div>
+    <script>
+        var application = angular.module('main', []);
+
+        application.controller('search', function($scope, $http)
+        {
+            $scope.search = function()
+            {
+                $http.get('http://localhost:8080/search?query=' + $scope.query, {headers: {'Accept': 'text/plain'}}).then(function(response)
+                {
+                    data = response.data;
+                    $scope.rank = data.substring(data.indexOf('*****[Rank]*****') + 16, data.indexOf('*****[/Rank]*****'));
+                    $scope.title = data.substring(data.indexOf('*****[Title]*****') + 17, data.indexOf('*****[/Title]*****'));
+                    $scope.url = data.substring(data.indexOf('*****[URL]*****') + 15, data.indexOf('*****[/URL]*****'));
+                    document.getElementById('link').setAttribute('href', $scope.url);
+                    document.getElementById('links').setAttribute('href', $scope.url);
+                    if(data === "")
+                    {
+                        $scope.rank = "No Results ):";
+                        $scope.url = "Try Google";
+                        document.getElementById('links').setAttribute('href', 'https://www.google.com/search?q=' + $scope.query);
+                    }
+                    $scope.metadata = data.substring(data.indexOf('*****[Metadata]*****') + 20, data.indexOf('*****[/Metadata]*****'));
+                    $scope.header = data.substring(data.indexOf('*****[Header]*****') + 18, data.indexOf('*****[/Header]*****'));
+                    $scope.content = data.substring(data.indexOf('*****[Content]*****') + 19, data.indexOf('*****[/Content]*****'));
+                    var index = data.indexOf('*****[/Content]*****') + 1;
+                    $scope.rank1 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title1 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url1 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link1').setAttribute('href', $scope.url1);
+                    document.getElementById('links1').setAttribute('href', $scope.url1);
+                    $scope.metadata1 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header1 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content1 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank2 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title2 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url2 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link2').setAttribute('href', $scope.url2);
+                    document.getElementById('links2').setAttribute('href', $scope.url2);
+                    $scope.metadata2 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header2 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content2 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank3 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title3 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url3 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link3').setAttribute('href', $scope.url3);
+                    document.getElementById('links3').setAttribute('href', $scope.url3);
+                    $scope.metadata3 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header3 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content3 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank4 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title4 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url4 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link4').setAttribute('href', $scope.url4);
+                    document.getElementById('links4').setAttribute('href', $scope.url4);
+                    $scope.metadata4 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header4 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content4 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank5 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title5 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url5 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link5').setAttribute('href', $scope.url5);
+                    document.getElementById('links5').setAttribute('href', $scope.url5);
+                    $scope.metadata5 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header5 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content5 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank6 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title6 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url6 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link6').setAttribute('href', $scope.url6);
+                    document.getElementById('links6').setAttribute('href', $scope.url6);    
+                    $scope.metadata6 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header6 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content6 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank7 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title7 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url7 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link7').setAttribute('href', $scope.url7);
+                    document.getElementById('links7').setAttribute('href', $scope.url7);
+                    $scope.metadata7 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header7 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content7 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank8 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title8 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url8 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link8').setAttribute('href', $scope.url8);
+                    document.getElementById('links8').setAttribute('href', $scope.url8);
+                    $scope.metadata8 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header8 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content8 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                    index = data.indexOf('*****[/Content]*****', index + 1);
+                    $scope.rank9 = data.substring(data.indexOf('*****[Rank]*****', index) + 16, data.indexOf('*****[/Rank]*****', index));
+                    $scope.title9 = data.substring(data.indexOf('*****[Title]*****', index) + 17, data.indexOf('*****[/Title]*****', index));
+                    $scope.url9 = data.substring(data.indexOf('*****[URL]*****', index) + 15, data.indexOf('*****[/URL]*****', index));
+                    document.getElementById('link9').setAttribute('href', $scope.url9);
+                    document.getElementById('links9').setAttribute('href', $scope.url9);
+                    $scope.metadata9 = data.substring(data.indexOf('*****[Metadata]*****', index) + 20, data.indexOf('*****[/Metadata]*****', index));
+                    $scope.header9 = data.substring(data.indexOf('*****[Header]*****', index) + 18, data.indexOf('*****[/Header]*****', index));
+                    $scope.content9 = data.substring(data.indexOf('*****[Content]*****', index) + 19, data.indexOf('*****[/Content]*****', index + 1));
+                });
+            };
+        });
+    </script>
+    <object codetype = "application/java" classid = "java:bin/lucene/test.class" width = "800" height = "800"></object>
+</body>
+</html>
